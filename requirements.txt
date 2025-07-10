@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+pandas
+streamlit
+requests
+scikit-learn
+shap
+catboost
+xgboost
+lightgbm
+python-dotenv
+joblib
+streamlit_shap
