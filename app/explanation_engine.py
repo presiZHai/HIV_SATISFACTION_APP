@@ -1,116 +1,312 @@
 # ==========================
 # app/explanation_engine.py
 # ==========================
+# This module provides functions to explain model predictions using SHAP and a GenAI model.
+# It includes functions to generate explanations and apply rule-based reasoning for satisfaction scoring.
+# ==========================
+
 import shap
 import joblib
 import pandas as pd
+import numpy as np
 import os
 import json
 import requests
+import logging
 from dotenv import load_dotenv
-import numpy as np
+from pathlib import Path
 
-load_dotenv()
-openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
+# --------------------------
+# Load environment variables
+# --------------------------
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
 
-model_path = os.path.join(os.path.dirname(__file__), "../model/catboost_model.joblib")
-encoder_path = os.path.join(os.path.dirname(__file__), "../model/encoder.joblib")
-model = joblib.load(model_path)
-encoder = joblib.load(encoder_path)
+API_KEY = os.getenv("SATISFACTION_APP_KEY")
+if not API_KEY:
+    raise EnvironmentError("❌ SATISFACTION_APP_KEY not found in .env file or environment")
 
-label_map = {1: 'Not Satisfied', 2: 'Satisfied', 3: 'Very Satisfied'}
+# --------------------------
+# Logging Setup
+# --------------------------
+logger = logging.getLogger("explain")
+logger.setLevel(logging.INFO)
+
+# --------------------------
+# Constants
+# --------------------------
+label_map = {
+    1: "Not Satisfied",
+    2: "Satisfied",
+    3: "Very Satisfied"
+}
 
 RULES = [
-    ('Empathy was low', "Enhance provider's empathetic communication", lambda s: s.get('Empathy_Score', 3) < 2.5),
-    ('Decision-sharing was low', "Improve patient engagement in decisions", lambda s: s.get('Decision_Share_Score', 3) < 2.5),
-    ('Listening was moderate', "Train providers on active listening techniques", lambda s: s.get('Listening_Score', 3) < 3)
+    ("Empathy was low", "Enhance empathetic communication", lambda s: s.get("Empathy_Score", 3) < 2.5),
+    ("Decision‑sharing low", "Improve patient engagement", lambda s: s.get("Decision_Share_Score", 3) < 2.5),
+    ("Listening moderate", "Train on active listening", lambda s: s.get("Listening_Score", 3) < 3),
 ]
 
-def enforce_categorical_dtypes(df, categorical_cols):
-    for col in categorical_cols:
-        df[col] = df[col].astype('category')
-    return df
+# --------------------------
+# Load model
+# --------------------------
+try:
+    model = joblib.load("model/top10_model.joblib")
+except Exception as e:
+    logger.error(f"❌ Failed to load model: {e}")
+    raise
 
-def deepseek_generate_explanation(prediction, confidence, top_features, reasons, suggestions):
-    prompt = f"""
-You are an AI assistant helping a healthcare team understand why a specific HIV client was predicted to be '{prediction}' with {confidence}% confidence.
-Top contributing factors:
-{json.dumps(top_features, indent=2)}
-Rule-based issues:
-{reasons}
-Suggestions for improvement:
-{suggestions}
-"""
-    headers = {
-        "Authorization": f"Bearer {openrouter_api_key}",
-        "Content-Type": "application/json"
-    }
-    body = {
-        "model": "deepseek/deepseek-v3-base:free",
-        "messages": [{"role": "user", "content": prompt}]
-    }
+# --------------------------
+# GenAI Explanation
+# --------------------------
+def deepseek_generate_explanation(pred, conf, topf, reasons, suggestions):
+    prompt = json.dumps({
+        "pred": pred,
+        "confidence": conf,
+        "top_features": topf,
+        "reasons": reasons,
+        "suggestions": suggestions
+    }, indent=2)
+
     try:
-        response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, data=json.dumps(body))
-        if response.status_code == 200:
-            return response.json()['choices'][0]['message']['content']
+        resp = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={"Authorization": f"Bearer {API_KEY}"},
+            json={
+                "model": "tngtech/deepseek-r1t2-chimera:free",
+                "messages": [{"role": "user", "content": prompt}]
+            },
+            timeout=10
+        )
+        if resp.status_code == 200:
+            return resp.json()["choices"][0]["message"]["content"]
         else:
-            return "LLM error: " + response.text
-    except Exception as e:
+            logger.error(f"LLM error: {resp.text}")
+            return f"LLM error: {resp.text}"
+    except requests.exceptions.RequestException as e:
+        logger.exception("🔌 LLM connection failed")
         return f"Exception: {e}"
 
-def explain_prediction(idx, instance, model, background_data, categorical_cols):
-    instance = enforce_categorical_dtypes(instance.copy(), categorical_cols)
-    background_data = enforce_categorical_dtypes(background_data.copy(), categorical_cols)
-
-    explainer = shap.TreeExplainer(model, background_data)
-    shap_vals = explainer.shap_values(instance)
-    preds = model.predict_proba(instance)[0]
-    pred_class = model.predict(instance)[0]
-    confidence = round(float(np.max(preds)) * 100, 1)
-    shap_vals_row = shap_vals[np.argmax(preds)][0] if isinstance(shap_vals, list) else shap_vals[0]
-
-    shap_dict = dict(zip(instance.columns, shap_vals_row.flatten()))
-    top_features = dict(sorted(shap_dict.items(), key=lambda x: abs(x[1]), reverse=True)[:3])
-    top_features = {k: round(float(v), 1) for k, v in top_features.items()}
-
-    shap_scores = {
-        'Empathy_Score': instance['Empathy_Score'].iloc[0],
-        'Decision_Share_Score': instance['Decision_Share_Score'].iloc[0],
-        'Listening_Score': instance['Listening_Score'].iloc[0],
-    }
-
-    reasons, suggestions = [], []
-    for reason_text, suggestion_text, rule_fn in RULES:
-        if rule_fn(shap_scores):
-            reasons.append(reason_text)
-            suggestions.append(suggestion_text)
-
-    mapped_pred = label_map.get(int(pred_class), f"Unknown class {pred_class}")
-
-    genai_explanation = deepseek_generate_explanation(mapped_pred, confidence, top_features, reasons, suggestions)
-
-    log_entry = {
-        'instance_idx': idx,
-        'prediction': mapped_pred,
-        'confidence': f"{confidence}%",
-        'top_features': top_features,
-        'reason': "; ".join(reasons),
-        'suggestions': "; ".join(suggestions),
-        'genai_explanation': genai_explanation,
-        'shap_values': shap_vals_row.tolist()
-    }
-
-    cache_path = os.path.join(os.path.dirname(__file__), "logs_cache.json")
+# --------------------------
+# Main SHAP + LLM Explanation
+# --------------------------
+def explain_prediction(idx, instance, model, categorical_cols=None, background_data=None):
     try:
-        if os.path.exists(cache_path):
-            with open(cache_path, "r") as f:
-                logs = json.load(f)
-        else:
-            logs = []
-        logs.append(log_entry)
-        with open(cache_path, "w") as f:
-            json.dump(logs, f, indent=2)
-    except Exception as e:
-        print(f"Failed to write to logs_cache.json: {e}")
+        explainer = shap.TreeExplainer(model, feature_perturbation="tree_path_dependent")
+        shap_vals = explainer.shap_values(instance)
+        probs = model.predict_proba(instance)[0]
+        pred_class = model.predict(instance)[0]
+        confidence = round(float(np.max(probs)) * 100, 1)
 
-    return log_entry
+        shap_row = shap_vals[np.argmax(probs)][0] if isinstance(shap_vals, list) else shap_vals[0]
+        shap_dict = dict(zip(instance.columns, shap_row.flatten()))
+        topf = {
+            k: round(v, 1)
+            for k, v in sorted(shap_dict.items(), key=lambda x: abs(x[1]), reverse=True)[:3]
+        }
+
+        # Rule-based heuristics for satisfaction scoring 
+        shap_scores = {
+            score: instance.iloc[0].get(score, 3)
+            for score in ["Empathy_Score", "Decision_Share_Score", "Listening_Score"]
+        }
+
+        reasons, sugg = [], []
+        for reason_text, sug_text, fn in RULES:
+            if fn(shap_scores):
+                reasons.append(reason_text)
+                sugg.append(sug_text)
+
+        # Call GenAI
+        gen = deepseek_generate_explanation(
+            label_map.get(int(pred_class), "Unknown"),
+            f"{confidence}%",
+            topf,
+            reasons,
+            sugg
+        )
+
+        return {
+            "instance_idx": idx,
+            "prediction": label_map.get(int(pred_class), str(pred_class)),
+            "confidence": f"{confidence}%",
+            "top_features": topf,
+            "suggestions": " ".join(sugg),
+            "genai_explanation": gen,
+            "shap_values": shap_row.tolist()
+        }
+
+    except Exception as e:
+        logger.exception("❌ SHAP or model explanation failed")
+        return {
+            "instance_idx": idx,
+            "prediction": "Error",
+            "confidence": "0%",
+            "top_features": {},
+            "suggestions": "",
+            "genai_explanation": f"Explanation failed: {e}",
+            "shap_values": []
+        }
+
+
+# # ==========================
+# # app/explanation_engine.py
+# # ==========================
+# # This module provides functions to explain model predictions using SHAP and a GenAI model.
+# # It includes functions to generate explanations and apply rule-based reasoning for satisfaction scoring.
+# # ==========================
+
+# import shap
+# import joblib
+# import pandas as pd
+# import numpy as np
+# import os
+# import json
+# import requests
+# import logging
+# from dotenv import load_dotenv
+# from pathlib import Path
+
+# # --------------------------
+# # Load environment variables
+# # --------------------------
+# env_path = Path('.') / '.env'
+# load_dotenv(dotenv_path=env_path)
+
+# API_KEY = os.getenv("SATISFACTION_APP_KEY")
+# if not API_KEY:
+#     raise EnvironmentError("❌ SATISFACTION_APP_KEY not found in .env file or environment")
+
+# # --------------------------
+# # Logging Setup
+# # --------------------------
+# logger = logging.getLogger("explain")
+# logger.setLevel(logging.INFO)
+
+# # --------------------------
+# # Constants
+# # --------------------------
+# label_map = {
+#     1: "Not Satisfied",
+#     2: "Satisfied",
+#     3: "Very Satisfied"
+# }
+
+# RULES = [
+#     ("Empathy was low", "Enhance empathetic communication", lambda s: s.get("Empathy_Score", 3) < 2.5),
+#     ("Decision‑sharing low", "Improve patient engagement", lambda s: s.get("Decision_Share_Score", 3) < 2.5),
+#     ("Listening moderate", "Train on active listening", lambda s: s.get("Listening_Score", 3) < 3),
+# ]
+
+# # --------------------------
+# # Load model
+# # --------------------------
+# try:
+#     model = joblib.load("model/top10_model.joblib")
+# except Exception as e:
+#     logger.error(f"❌ Failed to load model: {e}")
+#     raise
+
+# # --------------------------
+# # GenAI Explanation
+# # --------------------------
+# def deepseek_generate_explanation(pred, conf, topf, reasons, suggestions):
+#     prompt = json.dumps({
+#         "pred": pred,
+#         "confidence": conf,
+#         "top_features": topf,
+#         "reasons": reasons,
+#         "suggestions": suggestions
+#     }, indent=2)
+
+#     try:
+#         resp = requests.post(
+#             "https://openrouter.ai/api/v1/chat/completions",
+#             headers={"Authorization": f"Bearer {API_KEY}"},
+#             json={
+#                 "model": "tngtech/deepseek-r1t2-chimera:free",
+#                 "messages": [{"role": "user", "content": prompt}]
+#             },
+#             timeout=10
+#         )
+#         if resp.status_code == 200:
+#             return resp.json()["choices"][0]["message"]["content"]
+#         else:
+#             logger.error(f"LLM error: {resp.text}")
+#             return f"LLM error: {resp.text}"
+#     except requests.exceptions.RequestException as e:
+#         logger.exception("🔌 LLM connection failed")
+#         return f"Exception: {e}"
+
+# # --------------------------
+# # Main SHAP + LLM Explanation
+# # --------------------------
+# def explain_prediction(idx, instance, model, categorical_cols=None, background_data=None):
+#     try:
+#         # SHAP setup
+#         explainer = shap.TreeExplainer(model, feature_perturbation="tree_path_dependent")
+#         shap_vals = explainer.shap_values(instance)
+        
+#         # Model predictions
+#         probs = model.predict_proba(instance)[0]
+#         pred_class = model.predict(instance)[0]
+#         confidence = round(float(np.max(probs)) * 100, 1)
+
+#         # Determine the correct SHAP row
+#         if isinstance(shap_vals, list):
+#             # Multi-class case: pick SHAP values for predicted class
+#             class_index = np.argmax(probs)
+#             shap_row = shap_vals[class_index][0]  # First instance
+#         else:
+#             # Binary classification or regression
+#             shap_row = shap_vals[0]
+
+#         # Match SHAP values to feature names
+#         shap_dict = dict(zip(instance.columns, shap_row.flatten()))
+#         topf = {
+#             k: round(v, 1)
+#             for k, v in sorted(shap_dict.items(), key=lambda x: abs(x[1]), reverse=True)[:3]
+#         }
+
+#         # Satisfaction scoring heuristics
+#         shap_scores = {
+#             score: instance.iloc[0].get(score, 3)
+#             for score in ["Empathy_Score", "Decision_Share_Score", "Listening_Score"]
+#         }
+
+#         reasons, sugg = [], []
+#         for reason_text, sug_text, fn in RULES:
+#             if fn(shap_scores):
+#                 reasons.append(reason_text)
+#                 sugg.append(sug_text)
+
+#         # Generate LLM explanation
+#         gen = deepseek_generate_explanation(
+#             label_map.get(int(pred_class), "Unknown"),
+#             f"{confidence}%",
+#             topf,
+#             reasons,
+#             sugg
+#         )
+
+#         return {
+#             "instance_idx": idx,
+#             "prediction": label_map.get(int(pred_class), str(pred_class)),
+#             "confidence": f"{confidence}%",
+#             "top_features": topf,
+#             "suggestions": " ".join(sugg),
+#             "genai_explanation": gen,
+#             "shap_values": shap_row.tolist()  # ✅ Serialized safely for frontend
+#         }
+
+#     except Exception as e:
+#         logger.exception("❌ SHAP or model explanation failed")
+#         return {
+#             "instance_idx": idx,
+#             "prediction": "Error",
+#             "confidence": "0%",
+#             "top_features": {},
+#             "suggestions": "",
+#             "genai_explanation": f"Explanation failed: {e}",
+#             "shap_values": []
+#         }

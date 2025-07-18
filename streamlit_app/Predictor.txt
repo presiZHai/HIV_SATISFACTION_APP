@@ -1,0 +1,112 @@
+# ==========================================
+#  Streamlit UI (Predictor.py)
+#  Purpose: Collect user inputs, run prediction, and generate PDF report
+# ==========================================
+import streamlit as st
+import pandas as pd
+import requests
+import joblib
+import io
+from datetime import datetime
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.utils import ImageReader
+
+st.set_page_config(page_title="HIV Client Satisfaction Predictor", layout="wide")
+st.title("📋 Client Satisfaction Predictor (Top 10 Features)")
+
+@st.cache_resource
+def load_top_features():
+    return joblib.load('model/important_features.joblib')
+
+top_features = load_top_features()
+
+likert_options = [
+    'Strongly Disagree', 'Disagree',
+    'Neither Agree or Disagree', 'Agree', 'Strongly Agree'
+]
+likert_mapping = {option: i + 1 for i, option in enumerate(likert_options)}
+
+col1, col2 = st.columns(2)
+user_inputs = {}
+midpoint = len(top_features) // 2
+
+with col1:
+    for feature in top_features[:midpoint]:
+        val = st.selectbox(feature, likert_options, index=2)
+        user_inputs[feature] = likert_mapping[val]
+
+with col2:
+    for feature in top_features[midpoint:]:
+        val = st.selectbox(feature, likert_options, index=2)
+        user_inputs[feature] = likert_mapping[val]
+
+def generate_pdf_report(data):
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=letter)
+    try:
+        logo1 = ImageReader("streamlit_app/assets/ai4sid.png")
+        logo2 = ImageReader("streamlit_app/assets/ahfid.png")
+        c.drawImage(logo1, 40, 730, width=80, height=80, mask='auto')
+        c.drawImage(logo2, 460, 730, width=80, height=80, mask='auto')
+    except Exception as e:
+        print("[WARNING] Logo rendering failed:", e)
+
+    textobject = c.beginText(40, 710)
+    textobject.setFont("Helvetica-Bold", 12)
+    textobject.textLine("HIV Client Satisfaction Prediction Report")
+    textobject.setFont("Helvetica", 10)
+    textobject.textLine(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    textobject.textLine("")
+    textobject.textLine(f"Prediction: {data['prediction']}")
+    textobject.textLine(f"Confidence: {data['confidence']}")
+    textobject.textLine("")
+    textobject.textLine("Top Features:")
+    for k, v in data["top_features"].items():
+        textobject.textLine(f"  - {k}: {v}")
+    textobject.textLine("")
+    if data.get("reason"):
+        textobject.textLine("Rule-Based Insights:")
+        textobject.textLine(f"  Reason: {data['reason']}")
+        textobject.textLine(f"  Suggestions: {data['suggestions']}")
+        textobject.textLine("")
+    textobject.textLine("GenAI Explanation:")
+    for line in data["genai_explanation"].split("\n"):
+        textobject.textLine(line.strip())
+    c.drawText(textobject)
+    c.showPage()
+    c.save()
+    buffer.seek(0)
+    return buffer
+
+if st.button("🔮 Predict Satisfaction", type="primary"):
+    with st.spinner("Running model and generating explanation..."):
+        try:
+            response = requests.post(
+                "http://localhost:8000/predict",
+                json={"features": user_inputs}
+            )
+            st.write("[DEBUG] predict response:", response.status_code, response.text)
+            if response.status_code == 200:
+                result = response.json()
+                st.success(f"✅ Predicted Satisfaction: **{result['prediction']}**")
+                st.markdown(f"**Confidence:** {result['confidence']}")
+                st.markdown("**Top Features:**")
+                st.json(result["top_features"])
+                if result["reason"]:
+                    st.markdown(f"**Rule-Based Reason:** {result['reason']}")
+                    st.markdown(f"**Suggestions:** {result['suggestions']}")
+                st.subheader("🧠 GenAI Explanation")
+                st.markdown(result["genai_explanation"])
+                pdf = generate_pdf_report(result)
+                st.subheader("📄 Downloadable Report")
+                st.download_button(
+                    label="📥 Download PDF Report",
+                    data=pdf,
+                    file_name="satisfaction_report.pdf",
+                    mime="application/pdf"
+                )
+            else:
+                st.error(f"API Error: {response.status_code} — {response.text}")
+        except Exception as e:
+            st.error(f"Prediction failed: {e}")

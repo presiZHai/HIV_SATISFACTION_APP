@@ -24,5 +24,5 @@ RUN pip install -r requirements.txt \
 EXPOSE 8000
 EXPOSE 8501
 
-CMD ["sh", "-c", "uvicorn app.api:app --host 0.0.0.0 --port 8000 & streamlit run streamlit_app/dashboard.py --server.port=8501 --server.enableCORS=false"]
+CMD ["sh", "-c", "uvicorn app.api:app --host 0.0.0.0 --port 8000 & streamlit run streamlit_app/Home.py --server.port=8501 --server.enableCORS=false"]
 # End of Dockerfile

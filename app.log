@@ -1,0 +1,424 @@
+2025-07-16 17:22:43,925 INFO Prediction request payload: {'Respond_Q_Concerns': 'Agree', 'State': 'Bauchi', 'Info_Delivery_Score': 3.0, 'HIV_Care_Duration_Ratio': 8.0, 'Education_Grouped': 'Primary/Secondary', 'Checked_Understanding': 2.0, 'Facility_Care_Dur_Years_log': 12.0, 'Age_log': 45.0, 'Num of Children_log': 4.0, 'Discuss_NextSteps': 2.0}
+2025-07-16 17:22:44,017 ERROR Internal error in predict
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/api.py", line 48, in predict
+    df[categorical] = encoder.transform(df[categorical])
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/utils/_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py", line 1597, in transform
+    X_int, X_mask = self._transform(
+                    ^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py", line 201, in _transform
+    _check_feature_names(self, X, reset=False)
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/utils/validation.py", line 2787, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names seen at fit time, yet now missing:
+- Care_Duration_Bucket
+- Employment_Grouped
+- Family Setting
+- Gender
+- HIV_Diag_Type
+- ...
+
+2025-07-16 17:46:52,688 INFO Prediction request payload: {'Respond_Q_Concerns': 'Agree', 'State': 'Bauchi', 'Info_Delivery_Score': 1.0, 'HIV_Care_Duration_Ratio': 1.0, 'Education_Grouped': 'No formal', 'Checked_Understanding': 1.0, 'Facility_Care_Dur_Years_log': 1.0, 'Age_log': 1.0, 'Num of Children_log': 1.0, 'Discuss_NextSteps': 1.0}
+2025-07-16 17:46:52,835 ERROR Internal error in predict
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/api.py", line 64, in predict
+    df[categorical] = encoder.transform(df[categorical])
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/utils/_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py", line 1597, in transform
+    X_int, X_mask = self._transform(
+                    ^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py", line 201, in _transform
+    _check_feature_names(self, X, reset=False)
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/utils/validation.py", line 2787, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names seen at fit time, yet now missing:
+- Care_Duration_Bucket
+- Employment_Grouped
+- Family Setting
+- Gender
+- HIV_Diag_Type
+- ...
+
+2025-07-16 18:06:47,890 INFO Prediction request payload: {'Respond_Q_Concerns': 'Agree', 'State': 'Bauchi', 'Info_Delivery_Score': 1.0, 'HIV_Care_Duration_Ratio': 1.0, 'Education_Grouped': 'No formal', 'Checked_Understanding': 1.0, 'Facility_Care_Dur_Years_log': 1.0, 'Age_log': 1.0, 'Num of Children_log': 1.0, 'Discuss_NextSteps': 1.0}
+2025-07-16 18:06:48,055 ERROR Internal error in predict
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/api.py", line 65, in predict
+    df[categorical] = encoder.transform(df[categorical])
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/utils/_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py", line 1597, in transform
+    X_int, X_mask = self._transform(
+                    ^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py", line 201, in _transform
+    _check_feature_names(self, X, reset=False)
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/utils/validation.py", line 2787, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names seen at fit time, yet now missing:
+- Care_Duration_Bucket
+- Employment_Grouped
+- Family Setting
+- Gender
+- HIV_Diag_Type
+- ...
+
+2025-07-16 18:26:49,642 INFO Prediction request payload: {'Respond_Q_Concerns': 'Agree', 'State': 'Bauchi', 'Info_Delivery_Score': 1.0, 'HIV_Care_Duration_Ratio': 1.0, 'Education_Grouped': 'No formal', 'Checked_Understanding': 1.0, 'Facility_Care_Dur_Years_log': 1.0, 'Age_log': 1.0, 'Num of Children_log': 1.0, 'Discuss_NextSteps': 1.0}
+2025-07-16 18:26:49,713 ERROR Internal error in predict
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/api.py", line 65, in predict
+    df[categorical] = encoder.transform(df[categorical])
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/utils/_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py", line 1597, in transform
+    X_int, X_mask = self._transform(
+                    ^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py", line 201, in _transform
+    _check_feature_names(self, X, reset=False)
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/utils/validation.py", line 2787, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names seen at fit time, yet now missing:
+- Care_Duration_Bucket
+- Employment_Grouped
+- Family Setting
+- Gender
+- HIV_Diag_Type
+- ...
+
+2025-07-16 19:31:57,562 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Agree', 'State': 'Bauchi', 'Info_Delivery_Score': 1.0, 'HIV_Care_Duration_Ratio': 1.0, 'Education_Grouped': 'No formal', 'Checked_Understanding': 1.0, 'Facility_Care_Dur_Years_log': 1.0, 'Age_log': 1.0, 'Num of Children_log': 1.0, 'Discuss_NextSteps': 1.0}
+2025-07-16 19:31:57,658 ERROR: Encoder failed on input: The feature names should match those that were passed during fit.
+Feature names seen at fit time, yet now missing:
+- Care_Duration_Bucket
+- Employment_Grouped
+- Family Setting
+- Gender
+- HIV_Diag_Type
+- ...
+
+2025-07-16 19:31:57,661 ERROR: Internal error during prediction
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/api.py", line 81, in predict
+    df[categorical] = encoder.transform(df[categorical])
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/utils/_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py", line 1597, in transform
+    X_int, X_mask = self._transform(
+                    ^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py", line 201, in _transform
+    _check_feature_names(self, X, reset=False)
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/sklearn/utils/validation.py", line 2787, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names seen at fit time, yet now missing:
+- Care_Duration_Bucket
+- Employment_Grouped
+- Family Setting
+- Gender
+- HIV_Diag_Type
+- ...
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/api.py", line 84, in predict
+    raise HTTPException(status_code=400, detail=f"Invalid categorical value: {e}")
+fastapi.exceptions.HTTPException: 400: Invalid categorical value: The feature names should match those that were passed during fit.
+Feature names seen at fit time, yet now missing:
+- Care_Duration_Bucket
+- Employment_Grouped
+- Family Setting
+- Gender
+- HIV_Diag_Type
+- ...
+
+2025-07-16 20:23:22,162 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-16 20:26:25,612 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-16 20:26:33,550 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Agree', 'State': 'Bauchi', 'Education_Grouped': 'No formal', 'Info_Delivery_Score': 1.0, 'HIV_Care_Duration_Ratio': 1.0, 'Checked_Understanding': 1.0, 'Discuss_NextSteps': 1.0, 'Empathy_Listening_Interaction': 1.0, 'Num of Children_log': 1.0, 'Age_log': 1.0}
+2025-07-16 20:26:34,033 ERROR: Unexpected error during prediction
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/shap/explainers/_tree.py", line 311, in __init__
+    self.expected_value = self.model.predict(self.data).mean(0)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/shap/explainers/_tree.py", line 1599, in predict
+    X = X.astype(self.input_dtype)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: 'Agree'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/api.py", line 91, in predict
+    result = explain_prediction(len(logs), df, model, categorical_cols=[])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/explanation_engine.py", line 69, in explain_prediction
+    explainer = shap.TreeExplainer(model, background_data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/shap/explainers/_tree.py", line 313, in __init__
+    raise ExplainerError(
+shap.utils._exceptions.ExplainerError: Currently TreeExplainer can only handle models with categorical splits when feature_perturbation="tree_path_dependent" and no background data is passed. Please try again using shap.TreeExplainer(model, feature_perturbation="tree_path_dependent").
+2025-07-16 20:46:05,885 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-16 20:47:36,924 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Agree', 'State': 'Bauchi', 'Education_Grouped': 'Primary/Secondary', 'Info_Delivery_Score': 4.0, 'HIV_Care_Duration_Ratio': 6.0, 'Checked_Understanding': 4.0, 'Discuss_NextSteps': 2.0, 'Empathy_Listening_Interaction': 4.0, 'Num of Children_log': 2.0, 'Age_log': 45.0}
+2025-07-16 20:47:52,778 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Agree', 'State': 'Bauchi', 'Education_Grouped': 'Primary/Secondary', 'Info_Delivery_Score': 4.0, 'HIV_Care_Duration_Ratio': 6.0, 'Checked_Understanding': 4.0, 'Discuss_NextSteps': 2.0, 'Empathy_Listening_Interaction': 4.0, 'Num of Children_log': 2.0, 'Age_log': 45.0}
+2025-07-16 20:47:56,074 ERROR: LLM call failed
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connection.py", line 790, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connection.py", line 969, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/util/ssl_.py", line 480, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/util/ssl_.py", line 524, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/lib/python3.12/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/lib/python3.12/ssl.py", line 1042, in _create
+    self.do_handshake()
+  File "/opt/miniconda3/lib/python3.12/ssl.py", line 1320, in do_handshake
+    self._sslobj.do_handshake()
+TimeoutError: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='openrouter.ai', port=443): Read timed out. (read timeout=5)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/explanation_engine.py", line 45, in deepseek_generate_explanation
+    resp = requests.post(
+           ^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/adapters.py", line 713, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='openrouter.ai', port=443): Read timed out. (read timeout=5)
+2025-07-16 20:47:56,106 INFO: Prediction result: {'instance_idx': 0, 'prediction': 'Satisfied', 'confidence': '51.0%', 'top_features': {'Respond_Q_Concerns': np.float64(-0.9), 'Education_Grouped': np.float64(0.6), 'State': np.float64(0.3)}, 'suggestions': '', 'genai_explanation': "Exception: HTTPSConnectionPool(host='openrouter.ai', port=443): Read timed out. (read timeout=5)", 'shap_values': [[-0.9206026088326055, 0.3313850862931305, 0.5892175225394765], [0.1601080913452035, -0.2967350799159696, 0.1366269885707663], [-0.24874736812383977, 0.0449966698328496, 0.20375069829098935], [0.19840377791667052, 0.05594334119145254, -0.25434711910812313], [0.6395575180906435, 0.02465239476638973, -0.6642099128570326], [-0.4716834179704956, 0.4145251916184416, 0.05715822635205427], [1.5612314708761246, -0.8862912112887482, -0.6749402595873767], [-0.06236906399372594, -0.021509263304469332, 0.08387832729819542], [-0.576954000933105, 0.3894637120409058, 0.1874902888921991], [-0.9763405797003905, 0.3407485183379182, 0.635592061362471]]}
+2025-07-16 20:48:03,502 ERROR: LLM call failed
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x13ee23950>, 'Connection to openrouter.ai timed out. (connect timeout=5)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='openrouter.ai', port=443): Max retries exceeded with url: /api/v1/chat/completions (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x13ee23950>, 'Connection to openrouter.ai timed out. (connect timeout=5)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/explanation_engine.py", line 45, in deepseek_generate_explanation
+    resp = requests.post(
+           ^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/adapters.py", line 688, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='openrouter.ai', port=443): Max retries exceeded with url: /api/v1/chat/completions (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x13ee23950>, 'Connection to openrouter.ai timed out. (connect timeout=5)'))
+2025-07-16 20:48:03,511 INFO: Prediction result: {'instance_idx': 0, 'prediction': 'Satisfied', 'confidence': '51.0%', 'top_features': {'Respond_Q_Concerns': np.float64(-0.9), 'Education_Grouped': np.float64(0.6), 'State': np.float64(0.3)}, 'suggestions': '', 'genai_explanation': "Exception: HTTPSConnectionPool(host='openrouter.ai', port=443): Max retries exceeded with url: /api/v1/chat/completions (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x13ee23950>, 'Connection to openrouter.ai timed out. (connect timeout=5)'))", 'shap_values': [[-0.9206026088326055, 0.3313850862931305, 0.5892175225394765], [0.1601080913452035, -0.2967350799159696, 0.1366269885707663], [-0.24874736812383977, 0.0449966698328496, 0.20375069829098935], [0.19840377791667052, 0.05594334119145254, -0.25434711910812313], [0.6395575180906435, 0.02465239476638973, -0.6642099128570326], [-0.4716834179704956, 0.4145251916184416, 0.05715822635205427], [1.5612314708761246, -0.8862912112887482, -0.6749402595873767], [-0.06236906399372594, -0.021509263304469332, 0.08387832729819542], [-0.576954000933105, 0.3894637120409058, 0.1874902888921991], [-0.9763405797003905, 0.3407485183379182, 0.635592061362471]]}
+2025-07-16 21:11:24,211 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-16 21:13:33,942 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Neither Agree Or Disagree', 'State': 'Bauchi', 'Education_Grouped': 'Primary/Secondary', 'Info_Delivery_Score': 1.0, 'HIV_Care_Duration_Ratio': 5.0, 'Checked_Understanding': 2.0, 'Discuss_NextSteps': 3.0, 'Empathy_Listening_Interaction': 4.0, 'Num of Children_log': 5.0, 'Age_log': 45.0}
+2025-07-16 21:13:36,558 ERROR: LLM error: {"error":{"message":"No auth credentials found","code":401}}
+2025-07-16 21:13:36,579 INFO: Prediction result: {'instance_idx': 0, 'prediction': 'Satisfied', 'confidence': '65.7%', 'top_features': {'Age_log': np.float64(0.6), 'Respond_Q_Concerns': np.float64(0.4), 'State': np.float64(-0.3)}, 'suggestions': '', 'genai_explanation': 'LLM error: {"error":{"message":"No auth credentials found","code":401}}', 'shap_values': [[0.4247378966976528, -0.31589721174938995, -0.10884068494826349], [0.06785750601501139, -0.26181942862666546, 0.19396192261165432], [-0.041341262187636695, -0.04031795380796229, 0.0816592159955981], [0.5857205202490608, -0.2208331963332853, -0.3648873239157766], [0.5964741900755152, -0.018350266735617276, -0.5781239233398968], [-0.8624596817889274, -0.0128711074210459, 0.8753307892099728], [1.037094160653599, -0.6249885565987718, -0.4121056040548274], [-0.6137644642940929, 0.3158113841171307, 0.297953080176962], [-0.4493642638534233, 0.23258344032698067, 0.21678082352644257], [-0.8025363659292232, 0.5464946613611136, 0.256041704568108]]}
+2025-07-16 21:43:12,893 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Neither Agree Or Disagree', 'State': 'Bauchi', 'Education_Grouped': 'Primary/Secondary', 'Info_Delivery_Score': 1.0, 'HIV_Care_Duration_Ratio': 5.0, 'Checked_Understanding': 2.0, 'Discuss_NextSteps': 3.0, 'Empathy_Listening_Interaction': 4.0, 'Num of Children_log': 5.0, 'Age_log': 45.0}
+2025-07-16 21:43:16,199 ERROR: LLM error: {"error":{"message":"No auth credentials found","code":401}}
+2025-07-16 21:43:16,237 INFO: Prediction result: {'instance_idx': 1, 'prediction': 'Satisfied', 'confidence': '65.7%', 'top_features': {'Age_log': np.float64(0.6), 'Respond_Q_Concerns': np.float64(0.4), 'State': np.float64(-0.3)}, 'suggestions': '', 'genai_explanation': 'LLM error: {"error":{"message":"No auth credentials found","code":401}}', 'shap_values': [[0.4247378966976528, -0.31589721174938995, -0.10884068494826349], [0.06785750601501139, -0.26181942862666546, 0.19396192261165432], [-0.041341262187636695, -0.04031795380796229, 0.0816592159955981], [0.5857205202490608, -0.2208331963332853, -0.3648873239157766], [0.5964741900755152, -0.018350266735617276, -0.5781239233398968], [-0.8624596817889274, -0.0128711074210459, 0.8753307892099728], [1.037094160653599, -0.6249885565987718, -0.4121056040548274], [-0.6137644642940929, 0.3158113841171307, 0.297953080176962], [-0.4493642638534233, 0.23258344032698067, 0.21678082352644257], [-0.8025363659292232, 0.5464946613611136, 0.256041704568108]]}
+2025-07-16 21:50:44,421 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-16 21:51:38,558 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Disagree', 'State': 'Jigawa', 'Education_Grouped': 'Primary/Secondary', 'Info_Delivery_Score': 2.0, 'HIV_Care_Duration_Ratio': 5.0, 'Checked_Understanding': 3.0, 'Discuss_NextSteps': 2.0, 'Empathy_Listening_Interaction': 4.0, 'Num of Children_log': 4.0, 'Age_log': 45.0}
+2025-07-16 21:52:34,574 INFO: Prediction result: {'instance_idx': 0, 'prediction': 'Not Satisfied', 'confidence': '68.3%', 'top_features': {'HIV_Care_Duration_Ratio': np.float64(0.7), 'Age_log': np.float64(0.6), 'Respond_Q_Concerns': np.float64(0.6)}, 'suggestions': '', 'genai_explanation': '\n\nThe provided JSON output from your machine learning model indicates a prediction of **"Not Satisfied"** with **68.3% confidence**. The top three features driving this prediction are `HIV_Care_Duration_Ratio`, `Age_log`, and `Respond_Q_Concerns`. Below is a refined explanation with actionable **reasons** and **suggestions** based on these features:\n\n### Updated JSON with Reasons & Suggestions:\n```json\n{\n  "pred": "Not Satisfied",\n  "confidence": "68.3%",\n  "top_features": {\n    "HIV_Care_Duration_Ratio": 0.7,\n    "Age_log": 0.6,\n    "Respond_Q_Concerns": 0.6\n  },\n  "reasons": [\n    "Short or inconsistent engagement with HIV care (HIV_Care_Duration_Ratio suggests gaps in care continuity).",\n    "Older age (Age_log) may correlate with unmet expectations or discomfort discussing sensitive health topics.",\n    "Poor responsiveness to patient questions/concerns (Respond_Q_Concerns indicates communication gaps)."\n  ],\n  "suggestions": [\n    "Strengthen care retention strategies (e.g., reminders, counseling) to improve HIV_Care_Duration_Ratio.",\n    "Tailor communication for older patients (e.g., clarify care plans, allocate more time for discussions).",\n    "Train staff on active listening and clear response protocols to address patient concerns proactively."\n  ]\n}\n```\n\n---\n\n### Key Reflections on the Reasoning:\n1. **HIV_Care_Duration_Ratio (0.7)**:  \n   A lower ratio implies the patient has not been consistently engaged in care (e.g., missed appointments, delayed treatments). This directly impacts satisfaction, as continuity of care is critical for chronic conditions like HIV.  \n   *Suggestion*: Address logistical/psychological barriers (e.g., transportation, stigma) to improve retention.\n\n2. **Age_log (0.6)**:  \n   Older patients may have heightened concerns about comorbidities, side effects, or privacy. The log-transformed age suggests nonlinear effects (e.g., dissatisfaction peaks in specific age groups).  \n   *Suggestion*: Conduct age-specific satisfaction surveys to identify and resolve unique pain points.\n\n3. **Respond_Q_Concerns (0.6)**:  \n   A low score here signals that providers may be dismissive, rushed, or unclear in addressing questions. This is a common driver of dissatisfaction in healthcare settings.  \n   *Suggestion*: Implement a feedback loop where patients rate responsiveness after each visit.\n\n---\n\n### Actionable Next Steps:\n- **Validate Feature Interpretation**: Ensure the directionality of features aligns with domain knowledge (e.g., confirm whether higher `Respond_Q_Concerns` scores truly correlate with dissatisfaction or if the scale is inverted).  \n- **Build Trust**: Use these insights to design targeted interventions (e.g., personalized care plans, staff training) while communicating transparently with patients.  \n- **Monitor Improvements**: Track changes in these features post-intervention to measure impact on satisfaction.  \n\nThis structured approach turns model outputs into meaningful strategies for enhancing patient experience. Let me know if you need further refinement!', 'shap_values': [[0.5627772184021214, -0.2713813100083706, -0.2913959083937512], [-0.30277883924749827, 0.6869420848357719, -0.3841632455882733], [-0.20016082247327632, 0.08904419772134238, 0.11111662475193351], [0.6271041578428903, -0.29064933393411196, -0.33645482390877945], [0.6301306373346809, 0.1484259456861016, -0.7785565830207821], [-0.7958339545124581, -0.03856486166877379, 0.8343988161812317], [1.1674490838356992, -0.7576775532907073, -0.40977153054499105], [-0.2429321987156095, 0.36541924655408176, -0.12248704783847292], [-0.4234842942616866, 0.1492304711145266, 0.2742538231471606], [-0.9558885612207422, 0.7135647650058758, 0.2423237962148647]]}
+2025-07-16 22:00:02,369 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-16 22:07:25,981 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-16 22:08:37,121 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Disagree', 'State': 'Jigawa', 'Education_Grouped': 'No formal', 'Info_Delivery_Score': 2.0, 'HIV_Care_Duration_Ratio': 6.0, 'Checked_Understanding': 2.0, 'Discuss_NextSteps': 3.0, 'Empathy_Listening_Interaction': 2.0, 'Num of Children_log': 2.0, 'Age_log': 35.0}
+2025-07-16 22:09:26,175 INFO: Prediction result: {'instance_idx': 0, 'prediction': 'Not Satisfied', 'confidence': '77.8%', 'top_features': {'HIV_Care_Duration_Ratio': np.float64(0.6), 'Respond_Q_Concerns': np.float64(0.5), 'Discuss_NextSteps': np.float64(-0.5)}, 'suggestions': '', 'genai_explanation': '\n\nBased on the model\'s output, here\'s a clear interpretation with actionable explanations:\n\n### Patient Satisfaction Assessment: Not Satisfied (77.8% Confidence)\n**Key drivers of dissatisfaction**:\n1. **HIV_Care_Duration_Ratio (0.6)**:  \n   - *Impact*: Patients with longer engagement in HIV care show **increased dissatisfaction**  \n   - *Possible Reason*: Long-term patients may experience "care fatigue," unmet expectations about treatment progress, or feel their chronic needs aren\'t fully addressed\n\n2. **Respond_Q_Concerns (0.5)**:  \n   - *Impact*: Provider responses to questions/concerns **paradoxically correlate** with dissatisfaction  \n   - *Red Flag*: This suggests responses may be perceived as dismissive, rushed, or inadequately comprehensive  \n\n3. **Discuss_NextSteps (-0.5)**:  \n   - *Impact*: **Failure to discuss future care plans** strongly drives dissatisfaction  \n   - *Critical Miss*: Patients need clear roadmaps—omitting this erodes trust in care continuity  \n\n---\n\n### Recommended Interventions\n**Immediate Actions**:\n1. **Care Duration Check-Ins**  \n   - Implement structured wellness conversations for patients with >2 years in care  \n   - Example: "How has your experience evolved since starting treatment?"\n\n2. **Communication Quality Audit**  \n   - Record and review patient-provider Q&A exchanges using validated tools like RIAS (Roter Interaction Analysis System)  \n   - Train staff on:  \n     ✓ Empathic listening ("I understand why this worries you...")  \n     ✓ Guided solution-building ("What would your ideal outcome look like?")  \n\n3. **Next-Step Standardization**  \n   - Mandate documented care plans at every visit using templates:  \n     ```\n     [ ] Review labs by [DATE]  \n     [ ] Schedule follow-up on [TOPIC] by [DATE]  \n     [ ] Patient goals for next 3 months: _________  \n     ```\n\n**Monitoring Metrics**:\n- 30-day satisfaction scores post-implementation  \n- % of visits with documented care plan milestones  \n- Patient-reported "feeling heard" scores  \n\n---\n\n### Why Missing "Reasons/Suggestions" Matters\nThe empty arrays indicate:\n1. **Model Limitations**: The algorithm detects patterns but can\'t explain human nuances  \n2. **Action Required**: Clinical teams should:  \n   - Shadow patient interactions to contextualize findings  \n   - Add qualitative feedback channels (e.g., post-visit open-text surveys)  \n\nPro Tip: Combine this output with patient journey mapping to pinpoint *when* dissatisfaction emerges in the care timeline.', 'shap_values': [[0.5296106620606539, -0.1821571927781862, -0.3474534692824689], [-0.31331965555181746, 0.5882336909684605, -0.27491403541664367], [-0.4811730145580194, 0.3874792634028067, 0.09369375115521131], [0.4405273555607859, 0.001155208210725351, -0.44168256377151144], [0.7856062016709618, 0.14886595079445525, -0.9344721524654171], [-0.7532065267035903, -0.1318783677617137, 0.8850848944653029], [1.2150554362754158, -0.7322423494214159, -0.48281308685399865], [0.02928318212380703, 0.25630081303430674, -0.28558399515811406], [-0.32649425071330634, 0.07859419907250913, 0.24790005164079762], [-0.9040890322122485, 0.7217135614103155, 0.18237547080193137]]}
+2025-07-16 22:16:54,109 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-16 22:19:46,227 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-16 22:20:04,780 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Agree', 'State': 'Bauchi', 'Education_Grouped': 'No formal', 'Info_Delivery_Score': 1.0, 'HIV_Care_Duration_Ratio': 1.0, 'Checked_Understanding': 1.0, 'Discuss_NextSteps': 1.0, 'Empathy_Listening_Interaction': 1.0, 'Num of Children_log': 1.0, 'Age_log': 1.0}
+2025-07-16 22:20:33,635 INFO: Prediction result: {'instance_idx': 0, 'prediction': 'Satisfied', 'confidence': '54.3%', 'top_features': {'Empathy_Listening_Interaction': np.float64(0.7), 'Respond_Q_Concerns': np.float64(-0.6), 'Discuss_NextSteps': np.float64(-0.6)}, 'suggestions': '', 'genai_explanation': '\n\nHere\'s an expanded interpretation of your patient satisfaction prediction report, filling in the "reasons" and "suggestions" sections while maintaining a clear, professional tone:\n\n**Reasons for Prediction:**\n1. **Positive Driver (Highlight):** The "Empathy/Listening/Interaction" score (+0.7) indicates strong rapport-building behaviors were present – likely attentive listening, non-verbal engagement, and/or emotional recognition that made patients feel heard.\n2. **Key Opportunities for Improvement:**\n   - Patients\' ["Respond_Q_Concerns" (-0.6)] suggests questions/concerns weren\'t fully resolved or required excessive clarification efforts.\n   - [-0.6 "Discuss_NextSteps"] implies discharge instructions or follow-up plans lacked clarity, completeness, or sufficient patient confirmation of understanding.\n\n**Strategic Suggestions:**\n1. **Refine Q&A Protocols:**\n   - Implement structured frameworks like "Teach-Back" to confirm patient understanding after explanations.\n   - Train staff to solicit hidden concerns ("What unanswered questions might you still have?") beyond direct inquiries.\n2. **Strengthen Discharge/Transition Conversations:**\n   - Develop standardized next-step templates that balance detail with digestibility (consider layered discharge packets).\n   - Introduce post-visit summaries (digital or paper) reinforcing plans and concern-resolution contacts.\n3. **Maintain Emphatic Strengths Systematically:**\n   - Audit current empathy training outcomes to identify replicable behaviors yielding the "+0.7" benefit.\n   - Integrate empathy metrics (brief patient surveys) into routine quality checks.\n4. **Investigate Low Confidence** (54.3% = borderline call):\n   - Analyze if contradictory NLP signals (positive tone but unresolved issues) caused prediction uncertainty.\n   - Prioritize targeted patient interviews to verify root causes behind the negative feature scores.\n\n**Why This Matters:**  \nWhile satisfaction was ultimately predicted, the marginal confidence and significant negative drivers suggest vulnerability. Proactive intervention on care transitions and concern resolution could convert neutral experiences into strong positive sentiment.\n\nWould you like to discuss how these features were measured/scored or brainstorm operational implementation strategies?', 'shap_values': [[-0.587469726240199, 0.3496477841233781, 0.23782194211682062], [-0.24119856751757002, -0.06499536340785968, 0.30619393092542985], [-0.5858959584939368, 0.6799975100992603, -0.09410155160532184], [0.5724600960956548, -0.0903730014454976, -0.4820870946501574], [0.26594112225603517, -0.41477354328547655, 0.14883242102944158], [-0.9970000370973432, -0.09077729181622982, 1.0877773289135726], [1.2851815575751158, -0.6999717864335888, -0.5852097711415262], [-0.21020063919522614, 0.27632315614968644, -0.0661225169544605], [0.47757305728399785, -0.3240434145258328, -0.1535296427581656], [0.10974556032794168, 0.14920766572385383, -0.2589532260517947]]}
+2025-07-17 00:53:28,883 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 00:54:59,055 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 00:55:04,287 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 00:55:16,825 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 01:02:10,812 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 01:05:42,918 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 01:05:52,260 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 01:06:39,240 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Strongly Agree', 'State': 'Kano', 'Education_Grouped': 'No formal', 'Info_Delivery_Score': 4.0, 'HIV_Care_Duration_Ratio': 10.0, 'Checked_Understanding': 2.0, 'Discuss_NextSteps': 5.0, 'Empathy_Listening_Interaction': 2.0, 'Num of Children_log': 3.0, 'Age_log': 37.0}
+2025-07-17 01:06:46,518 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Strongly Agree', 'State': 'Kano', 'Education_Grouped': 'No formal', 'Info_Delivery_Score': 4.0, 'HIV_Care_Duration_Ratio': 10.0, 'Checked_Understanding': 2.0, 'Discuss_NextSteps': 5.0, 'Empathy_Listening_Interaction': 2.0, 'Num of Children_log': 3.0, 'Age_log': 37.0}
+2025-07-17 01:06:51,182 ERROR: 🔌 LLM connection failed
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connection.py", line 565, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/lib/python3.12/http/client.py", line 1428, in getresponse
+    response.begin()
+  File "/opt/miniconda3/lib/python3.12/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/lib/python3.12/http/client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/lib/python3.12/socket.py", line 708, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/lib/python3.12/ssl.py", line 1252, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/lib/python3.12/ssl.py", line 1104, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='openrouter.ai', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/waleabiodun/hiv_satisfaction_app/app/explanation_engine.py", line 72, in deepseek_generate_explanation
+    resp = requests.post(
+           ^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/waleabiodun/hiv_satisfaction_app/venv/lib/python3.12/site-packages/requests/adapters.py", line 713, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='openrouter.ai', port=443): Read timed out. (read timeout=10)
+2025-07-17 01:06:51,201 INFO: Prediction result: {'instance_idx': 0, 'prediction': 'Satisfied', 'confidence': '65.8%', 'top_features': {'HIV_Care_Duration_Ratio': np.float64(-0.7), 'Checked_Understanding': np.float64(0.6), 'Age_log': np.float64(0.4)}, 'suggestions': '', 'genai_explanation': "Exception: HTTPSConnectionPool(host='openrouter.ai', port=443): Read timed out. (read timeout=10)", 'shap_values': [[0.2535743629226792, -0.30542946932239806, 0.05185510639971885], [0.068540482274378, -0.6881921474115104, 0.6196516651371323], [-0.2601245499335138, -0.026941992698287946, 0.28706654263180265], [0.41058210847428084, 0.03647470635347464, -0.4470568148277553], [0.8952475349791618, 0.21790204941230168, -1.1131495843914634], [-0.5428838743269373, -0.05669751879104555, 0.5995813931179816], [-0.7026710989122159, 0.4028216185551806, 0.2998494803570357], [0.42390927983523813, -0.1745631600433396, -0.2493461197918977], [-0.35369937009495245, 0.09943191928982023, 0.25426745080513236], [-0.9144826849438628, 0.5761500030670456, 0.338332681876817]]}
+2025-07-17 01:07:47,044 INFO: Prediction result: {'instance_idx': 0, 'prediction': 'Satisfied', 'confidence': '65.8%', 'top_features': {'HIV_Care_Duration_Ratio': np.float64(-0.7), 'Checked_Understanding': np.float64(0.6), 'Age_log': np.float64(0.4)}, 'suggestions': '', 'genai_explanation': '\nBased on the prediction output provided, here\'s an enhanced analysis with clear explanations and actionable insights:\n\n### Enhanced Prediction Analysis\n```json\n{\n  "pred": "Satisfied",\n  "confidence": "65.8% (Moderate Confidence)",\n  "top_features": {\n    "HIV_Care_Duration_Ratio": -0.7,\n    "Checked_Understanding": 0.6,\n    "Age_log": 0.4\n  },\n  "reasons": [\n    "Higher satisfaction is associated with providers confirming patient understanding (strongest positive influence)",\n    "Shorter HIV care duration relative to treatment benchmarks contributes positively",\n    "Older patient age correlates with increased satisfaction"\n  ],\n  "suggestions": [\n    "Reinforce communication protocols: Train staff to consistently check patient understanding during consultations",\n    "Review HIV care timelines: Investigate why shorter care durations correlate with satisfaction (e.g., efficient treatment cycles)",\n    "Implement age-specific support: Develop tailored communication strategies for younger patients to improve their experience",\n    "Verify data patterns: Collect additional patient feedback to validate the HIV care duration finding"\n  ]\n}\n```\n\n### Key Interpretation\n1. **Confidence Level (65.8%)**  \n   Moderate confidence suggests the prediction is directionally reliable but influenced by edge-case factors. Consider:\n   - Investigating features not strongly captured by the model\n   - Collecting more data points for borderline cases\n\n2. **Feature Insights**  \n   | Feature | Impact | Practical Meaning |\n   |---------|--------|-------------------|\n   | `Checked_Understanding` | +0.6 | Providers clarifying patient understanding has the strongest positive impact |\n   | `HIV_Care_Duration_Ratio` | -0.7 | Shorter care cycles relative to expected timelines predict satisfaction |\n   | `Age_log` | +0.4 | Satisfaction increases with patient age (log-scaled relationship) |\n\n3. **Action Recommendations**  \n   - **Quick Win:** Implement a "Understanding Check" protocol in patient interactions\n   - **Investigative Action:** Perform cohort analysis on HIV patients with different care durations\n   - **Monitoring:** Track satisfaction scores by age decile to identify specific pain points for younger patients\n\n### Contextual Notes\n- The negative HIV_Care_Duration_Ratio coefficient warrants investigation: Are efficient treatment protocols driving satisfaction, or could this indicate insufficient care time?\n- The moderate confidence suggests implementing suggested actions as pilot programs before broad deployment.\n- Age-related patterns imply potential generational differences in service expectations that merit deeper study.\n\nWould you like me to elaborate on any specific aspect of this analysis or suggest implementation strategies for the recommendations?', 'shap_values': [[0.2535743629226792, -0.30542946932239806, 0.05185510639971885], [0.068540482274378, -0.6881921474115104, 0.6196516651371323], [-0.2601245499335138, -0.026941992698287946, 0.28706654263180265], [0.41058210847428084, 0.03647470635347464, -0.4470568148277553], [0.8952475349791618, 0.21790204941230168, -1.1131495843914634], [-0.5428838743269373, -0.05669751879104555, 0.5995813931179816], [-0.7026710989122159, 0.4028216185551806, 0.2998494803570357], [0.42390927983523813, -0.1745631600433396, -0.2493461197918977], [-0.35369937009495245, 0.09943191928982023, 0.25426745080513236], [-0.9144826849438628, 0.5761500030670456, 0.338332681876817]]}
+2025-07-17 01:18:22,144 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 01:18:30,877 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 01:18:35,296 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 01:19:42,545 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 01:19:49,688 INFO: Loaded model and top features: ['Respond_Q_Concerns', 'State', 'Education_Grouped', 'Info_Delivery_Score', 'HIV_Care_Duration_Ratio', 'Checked_Understanding', 'Discuss_NextSteps', 'Empathy_Listening_Interaction', 'Num of Children_log', 'Age_log']
+2025-07-17 01:20:27,133 INFO: Prediction request payload: {'Respond_Q_Concerns': 'Strongly Disagree', 'State': 'Jigawa', 'Education_Grouped': 'Tertiary+', 'Info_Delivery_Score': 2.0, 'HIV_Care_Duration_Ratio': 4.0, 'Checked_Understanding': 1.0, 'Discuss_NextSteps': 2.0, 'Empathy_Listening_Interaction': 2.5, 'Num of Children_log': 5.0, 'Age_log': 40.0}
+2025-07-17 01:30:31,241 INFO: Prediction result: {'instance_idx': 0, 'prediction': 'Satisfied', 'confidence': '50.7%', 'top_features': {'Age_log': np.float64(0.8), 'Respond_Q_Concerns': np.float64(-0.6), 'Empathy_Listening_Interaction': np.float64(-0.4)}, 'suggestions': '', 'genai_explanation': '\n\n', 'shap_values': [[-0.612470461903159, 0.3300793043413608, 0.28239115756179956], [-0.1771503176897846, 0.2683915039062801, -0.09124118621649589], [0.30219351224450475, -0.39942398393486883, 0.09723047169036424], [0.7610809313552247, -0.4819882152271673, -0.2790927161280572], [0.7047824760594688, 0.09048047847911363, -0.795262954538581], [-0.7378078350502877, -0.10942771238881192, 0.8472355474391009], [1.2492331761112143, -0.781290019222533, -0.4679431568886808], [0.07651513175405181, 0.209168476585374, -0.2856836083394261], [-0.4747185057101058, 0.1156632237932659, 0.3590552819168399], [-0.8590705541104285, 0.49300000970872865, 0.3660705444016988]]}
